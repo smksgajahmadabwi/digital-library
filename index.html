@@ -38,21 +38,26 @@
       width: 30%;
       padding: 20px;
       background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
       overflow-y: auto;
     }
     .content {
       flex-grow: 1;
       padding: 20px;
     }
-    input[type="text"] {
-      width: 100%;
+    #searchBox {
       padding: 10px;
-      margin-bottom: 15px;
       font-size: 16px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
     }
-    ul {
+    #listView {
       list-style: none;
       padding: 0;
+      margin: 0;
+      flex-grow: 1;
+      overflow-y: auto;
     }
     li {
       padding: 10px;
@@ -98,7 +103,6 @@
   <script>
     let dataList = [];
 
-    // Load file .txt saat awal
     fetch('data.txt')
       .then(response => response.text())
       .then(text => {
@@ -139,7 +143,6 @@
       };
       iframe.src = link;
 
-      // Optional: timeout fallback in case iframe fails silently
       setTimeout(() => {
         if (!iframe.contentDocument || iframe.contentDocument.body.innerHTML.trim() === "") {
           console.warn("Empty iframe content. Opening in new tab.");
@@ -148,8 +151,10 @@
       }, 2000);
     }
   </script>
+  
  <footer>
-  &copy; 2025 Perpustakaan SMK Gajah Mada Banyuwangi
+  &copy; 2025 SMK Gajah Mada Banyuwangi - TeFa Solusindo
 </footer>
+  
 </body>
 </html>
