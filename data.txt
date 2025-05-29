@@ -1,4 +1,4 @@
-Cerpen_Penikmat Alur,https://fliphtml5.com/dsfrf/zbzo/Cerpen/
+Cerpen_Penikmat_Alur,https://fliphtml5.com/dsfrf/zbzo/Cerpen/
 acdelco_e35_gm,https://ecu.design/files/ecu_pinout/acdelco_e35_gm.pdf
 acdelco_e37_opel,https://ecu.design/files/ecu_pinout/acdelco_e37_opel.pdf
 acdelco_e38_gm,https://ecu.design/files/ecu_pinout/acdelco_e38_gm.pdf
