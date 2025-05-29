@@ -85,7 +85,7 @@
       <ul id="listView"></ul>
     </div>
     <div class="content">
-      <iframe id="pdfViewer" src="" title="PDF Viewer"></iframe>
+      <iframe id="pdfViewer" src="" title="PDF Viewer" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
     </div>
   </div>
 
@@ -110,9 +110,7 @@
       list.forEach(item => {
         const li = document.createElement('li');
         li.textContent = item.title;
-        li.onclick = () => {
-          document.getElementById('pdfViewer').src = item.link;
-        };
+        li.onclick = () => openInIframeOrTab(item.link);
         listView.appendChild(li);
       });
     }
@@ -121,6 +119,27 @@
       const query = document.getElementById('searchBox').value.toLowerCase();
       const filtered = dataList.filter(item => item.title.toLowerCase().includes(query));
       displayList(filtered);
+    }
+
+    function openInIframeOrTab(link) {
+      const iframe = document.getElementById('pdfViewer');
+      iframe.src = '';
+      iframe.onload = () => {
+        console.log("Loaded in iframe: ", link);
+      };
+      iframe.onerror = () => {
+        console.warn("Iframe blocked or failed. Opening in new tab.");
+        window.open(link, '_blank');
+      };
+      iframe.src = link;
+
+      // Optional: timeout fallback in case iframe fails silently
+      setTimeout(() => {
+        if (!iframe.contentDocument || iframe.contentDocument.body.innerHTML.trim() === "") {
+          console.warn("Empty iframe content. Opening in new tab.");
+          window.open(link, '_blank');
+        }
+      }, 2000);
     }
   </script>
 
